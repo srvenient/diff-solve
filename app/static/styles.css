@@ -1,8 +1,13 @@
 body {
+    margin: 0;
+    padding: 0;
 }
 
 header {
-    font-family: 'Newsreader', serif;
+    transform: scale(0.8);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 header h3 {
@@ -31,6 +36,10 @@ header a {
     margin: 16px 0 0 -96px;
 }
 
+.hero {
+    transform: scale(0.8);
+}
+
 .hero h1 {
     margin: 20px 0 16px -96px;
     font-size: 3.56em;
@@ -43,37 +52,131 @@ header a {
     font-family: 'Newsreader', serif;
 }
 
-.calculator {
-    width: 800px;
-    height: 159px;
+.content {
+    width: 107%;
+    height: 750px;
     background-color: #FAFAF5;
     border-radius: 24px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 51px 0 16px -96px;
+    margin: -10px 0 20px -90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.8);
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 20px 0 0 0;
+    padding: 10px;
+    border: none;
+}
+
+.important {
+    text-decoration: none;
+    color: #426B1F;
+    font-size: 22px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+#settings {
+    position: absolute;
+    right: -155px;
+    top: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+#settings {
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    background-color: #FAFAF5;
+    padding-left: 40px;
+    font-size: 30px;
+    color: #426b1f;
+}
+
+.input-container {
     display: flex;
     flex-direction: row;
-    align-items: start;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-box {
+    width: 150px;
+    height: 67px;
+    margin-top: 20px;
+    padding: 10px; /* Espaciado interno del input */
+    border: 0; /* Borde gris claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.display input {
+    width: 632px;
+    height: 67px;
+    margin-top: 30px;
+    padding: 10px; /* Espaciado interno del input */
+    border: 0; /* Borde gris claro */
+    border-radius: 20px;
+    background-color: #E9E9E9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.solve {
+    width: 100px;
+    height: 67px;
+    margin-top: 30px;
+    margin-left: -30px;
+    padding: 10px;
+    border: 0;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    text-align: center;
 }
 
 .output-equation {
     width: 387px;
     height: 115px;
-    margin-top: 20px;
-    margin-right: 20px;
+    font-size: 1.75rem;
+    margin-left: 18px;
     border-radius: 20px;
     text-align: center;
     align-content: center;
 }
 
-.display input {
-    width: 387px;
-    height: 115px;
+.display-solution {
+    width: 632px;
+    height: 367px;
+    background-color: #E9E9E9;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.display-solution h2 {
+    font-size: 22px;
     margin-top: 20px;
-    margin-left: 20px;
-    padding: 10px; /* Espaciado interno del input */
-    border: 0; /* Borde gris claro */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1.5rem;
-    text-align: center;
 }
