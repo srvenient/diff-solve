@@ -41,15 +41,23 @@
         <hr class="divider">
     </div>
     <div class="content">
-        <div class="calculator">
-            <div class="input-container">
+        <div class="info">
+            <a class="important">Importante* recuerda que esta <br>calculadora funciona en y respecto a x</a>
+            <button id="settings"><i class="bi bi-gear"></i></button>
+        </div>
+        <div class="input-container">
+            <div class="input">
                 <form method="POST" action="/submit">
                     <label class="display">
-                        <input type="text" id="input" placeholder="x*y">
+                        <input type="text" id="input" placeholder="y' = x*y">
                     </label>
                 </form>
             </div>
-            <label class="output-equation" id="output"></label>
+            <button class="solve" id="solve">=</button>
+        </div>
+        <label class="output-equation" id="output"></label>
+        <div class="display-solution">
+            <h2 class="text">Solucion general de la EDO</h2>
         </div>
     </div>
 </main>
