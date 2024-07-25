@@ -1,0 +1,79 @@
+body {
+}
+
+header {
+    font-family: 'Newsreader', serif;
+}
+
+header h3 {
+    margin: 41px 0 39px -96px;
+    font-size: 1.75em;
+    font-weight: normal;
+    color: #426b1f;
+}
+
+header .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a {
+    text-decoration: none;
+    color: #426b1f;
+    font-size: 1.75em;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid black;
+    margin: 16px 0 0 -96px;
+}
+
+.hero h1 {
+    margin: 20px 0 16px -96px;
+    font-size: 3.56em;
+    font-family: 'Newsreader', serif;
+}
+
+.hero small {
+    font-weight: normal;
+    font-size: 20px;
+    font-family: 'Newsreader', serif;
+}
+
+.calculator {
+    width: 800px;
+    height: 159px;
+    background-color: #FAFAF5;
+    border-radius: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 51px 0 16px -96px;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}
+
+.output-equation {
+    width: 387px;
+    height: 115px;
+    margin-top: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+    text-align: center;
+    align-content: center;
+}
+
+.display input {
+    width: 387px;
+    height: 115px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 10px; /* Espaciado interno del input */
+    border: 0; /* Borde gris claro */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+    text-align: center;
+}
