@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, render_template, request
-from solve.utils import latex_chain
+from differential_equation.utils import latex_chain
 
 bp = Blueprint('main', __name__)
 
