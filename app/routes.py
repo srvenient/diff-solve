@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, render_template, request
-from differential_equation.utils import latex_chain
+from differential_equation.utils import get_as_equation
+from sympy import latex
 
 bp = Blueprint('main', __name__)
 
@@ -10,8 +11,10 @@ def index():
 
 
 @bp.route('/api/get/latex', methods=['POST'])
-def get_latex():
+def get_latex_format():
     data = request.get_json()
-    text = data['value']
-    latex = latex_chain(text)
-    return jsonify({"latex": latex})
+    value = data['value']
+    if value == "":
+        return jsonify({"latex": ""})
+    eq = get_as_equation(value)
+    return jsonify({"latex": latex(eq)})
