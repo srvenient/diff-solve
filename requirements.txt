@@ -1,0 +1,4 @@
+sympy~=1.13.1
+matplotlib~=3.9.1
+Flask~=3.0.3
+setuptools~=71.1.0
