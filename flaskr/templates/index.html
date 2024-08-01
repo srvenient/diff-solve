@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diff Solve</title>
+
+    <link rel="stylesheet" href="../static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: "tex2jax_ignore",
+                processHtmlClass: "tex2jax_process"
+            }
+        };
+    </script>
+</head>
+<body>
+<header class="container d-flex flex-row justify-content-between align-items-center">
+    <a class="header-title text-decoration-none">Diff Solve</a>
+    <nav>
+        <a href="#" id="dark-mode"><i class="bi bi-highlights"></i></a>
+    </nav>
+</header>
+<main>
+    <div class="container hero">
+        <h1>Ecuaciones diferenciales <small>*Calculadora</small></h1>
+        <hr class="divider">
+        <p class="mt-5 hero-description">
+            La calculadora aplica métodos para resolver: ecuaciones diferenciales separables, homogéneas, lineales de
+            primer orden, de
+            Bernoulli y de Riccati. Sin o con condiciones iniciales (Esta calculadora funciona en y respecto a x).
+        </p>
+    </div>
+
+    <div class="container calculator d-flex justify-content-center align-items-center rounded-2">
+        <div class="calculator-body text-center">
+            <label>
+                <select class="select-method text-center bg-black text-white" id="options">
+                    <option value="automatic">Automatic</option>
+                    <option value="separable">Separable</option>
+                    <option value="homogeneous">Homogeneous</option>
+                    <option value="lineal">Lineal</option>
+                    <option value="bernoulli">Bernoulli</option>
+                    <option value="riccati">Riccati</option>
+                </select>
+            </label>
+
+            <button class="ic-btn bg-white" id="openModalBtn">Condiciones iniciales (Click)</button>
+            <!-- La ventana modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Condiciones Iniciales</h2>
+                    <form id="initialConditionsForm" class="modal-form" action="/submit">
+                        <label for="initial-conditions">
+                            Importante* recordar que el formato permitido
+                            es: y(0)=1, lo que quiere decir es: x igual a 0,
+                            & y es igual a 1.
+                            <br>
+                            <br>
+                            Si no se especifica algo diferente a y(0)=0, se asume
+                            que no contiene condiciones iniciales.
+
+                            <input type="text" id="initial-conditions" name="initial-conditions" value="y(0)=0">
+                        </label>
+                        <button type="submit">Guardar</button>
+                    </form>
+                </div>
+            </div>
+
+            <form id="form-equation-input" class="row" method="post" action="/submit">
+                <label for="input-equation">
+                    <input class="text-center" type="text" id="input-equation" placeholder="y' = x*y">
+                </label>
+            </form>
+            <button id="clear"><i class="bi bi-x-square-fill"></i></button>
+            <label class="display-equation" id="output-equation"></label>
+            <div class="solve-container border border-1 rounded-2 hidden" id="solve">
+                <a id="solve-title"></a>
+                <div id="step-by-step" class="step-by-step"></div>
+            </div>
+        </div>
+    </div>
+</main>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="../static/script.js"></script>
+</body>
+</html>
