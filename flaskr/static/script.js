@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.getElementById("clear")
     .addEventListener("click", () => {
+        hideSpinner()
+
         document.getElementById("solve").classList.add("hidden")
         document.getElementById("solve-title").innerHTML = "";
         document.getElementById("step-by-step").innerHTML = ""
@@ -39,8 +41,9 @@ document.getElementById("form-equation-input")
     .addEventListener("submit", (event) => {
         event.preventDefault();
 
-        document.getElementById("solve-title").innerHTML = "Solución paso a paso";
-        document.getElementById("solve").classList.remove("hidden")
+        showSpinner()
+        document.getElementById("solve-title").innerHTML = "";
+        document.getElementById("step-by-step").innerHTML = ""
 
         fetch(BASE_URL + "solve_ode", {
             method: "POST",
@@ -54,11 +57,18 @@ document.getElementById("form-equation-input")
         })
             .then(response => {
                 if (!response.ok) {
+                    alert("Error procesar la ecuación. Por favor, verifique que la ecuación sea correcta.");
                     throw new Error('Network response was not ok');
                 }
+
+                document.getElementById("solve-title").innerHTML = "Solución paso a paso";
+                document.getElementById("solve").classList.remove("hidden");
+
                 return response.json();
             })
             .then(data => {
+                hideSpinner()
+
                 const container = document.getElementById("step-by-step");
                 container.innerHTML = "";
 
@@ -95,6 +105,10 @@ document.getElementById("form-equation-input")
                 }
 
                 document.getElementById("initial-conditions").value = "y(0) = 0";
+            })
+            .catch((error) => {
+                hideSpinner()
+                console.error('There has been a problem with your fetch operation:', error);
             });
     });
 
@@ -117,6 +131,14 @@ function getAsLatex() {
                 .then(() => console.info("[Display Equation] MathJax typeset successfully"))
                 .catch((err) => console.error("Error rendering MathJax:", err));
         })
+}
+
+function showSpinner() {
+    document.getElementById('overlay').style.display = 'flex';
+}
+
+function hideSpinner() {
+    document.getElementById('overlay').style.display = 'none';
 }
 
 const modal = document.getElementById("myModal");

@@ -85,8 +85,14 @@
                     <input class="text-center" type="text" id="input-equation" placeholder="y' = x*y">
                 </label>
             </form>
+
             <button id="clear"><i class="bi bi-x-square-fill"></i></button>
             <label class="display-equation" id="output-equation"></label>
+
+            <div class="overlay" id="overlay">
+                <div class="spinner"></div>
+            </div>
+
             <div class="solve-container border border-1 rounded-2 hidden" id="solve">
                 <a id="solve-title"></a>
                 <div id="step-by-step" class="step-by-step"></div>
