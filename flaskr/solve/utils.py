@@ -1,16 +1,25 @@
 def replace_character(a: str) -> str:
-    """ Replace the characters in the string with the corresponding
+    """Replace the characters in the string with the corresponding
 
     These methods are designed to be an extension of the simplify methods,
     since it does not recognize some expressions, such as y'.
 
-    :param a: The string to be replaced
-    :return: The string with the characters replaced
+    Example:
+    >>> replace_character("y' = x*y")
+    "Derivative(y, x, 1) = x*y"
+
+    Args:
+        a: The string to be replaced
+
+    Returns:
+        The string with the characters replaced
     """
+    # Convert the string to a list of characters
     eq = list(a)
     result = []
     count = 0
 
+    # Analyze the expression character by character
     while count < len(eq):
         c = eq[count]
 
@@ -57,17 +66,36 @@ def replace_character(a: str) -> str:
 
 
 def analyze_initial_conditions(expr: str):
+    """Analyze the initial conditions
+
+    What this method does, is to analyze an expression, and from
+    that expression it gets the initial conditions.
+
+    Example:
+    >>> analyze_initial_conditions('y(0) = 1')
+    (0, 1)
+
+    Args:
+        expr: The expression to analyze
+
+    Returns:
+        y0, x0: The initial conditions
+    """
     if not expr:
         return None, None
 
+    # Remove spaces
     expr = expr.replace(' ', '')
-    characters = list(expr)
+    characters = list(expr)  # Convert the string to a list of characters
 
     y0 = ""
     x0 = ""
 
+    # Analyze the expression character by character to get the initial conditions
+    # The initial conditions are in the form y(x0) = y0
     count = 0
     while count < len(characters):
+        # If the character is a number, add it to the variable
         if characters[count] == '(':
             count += 1
             while count < len(characters) and characters[count] != ')':
@@ -80,4 +108,5 @@ def analyze_initial_conditions(expr: str):
 
         count += 1
 
+    # Return the initial conditions
     return int(y0), int(x0)
