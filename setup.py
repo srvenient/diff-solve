@@ -25,8 +25,9 @@ setuptools.setup(
     url='https://github.com/srvenient/differential-equations',
     packages=setuptools.find_packages('app'),
     install_requires=[
-        'sympy >= 1.13.0',
-        'flask >= 2.0.1'
+        'sympy >= 1.13.1',
+        'flask >= 3.0.3',
+        'matplotlib >= 3.9.1',
     ],
     python_requires='>=3.8',
     classifiers=[

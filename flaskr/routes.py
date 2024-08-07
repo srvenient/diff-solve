@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify
-from sympy import latex, pprint
+from sympy import latex
 
 from flaskr import services
 from flaskr.solve import utils

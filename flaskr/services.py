@@ -1,7 +1,7 @@
-from sympy import Eq, sympify, pprint
+from sympy import Eq, sympify
 
-from flaskr.solve.base_solver import NotImplementError
 from flaskr.solve import utils
+from flaskr.solve.base_solver import NotImplementError
 from flaskr.solve.methods import separable, selected
 
 
