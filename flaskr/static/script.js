@@ -48,8 +48,8 @@ document.getElementById("form-equation-input")
             body:
                 JSON.stringify({
                     value: INPUT.value || INPUT.placeholder,
-                    method: document.getElementById("options").value.toLowerCase(),
-                    initial_conditions: initialConditions || "y(0) = 0"
+                    method: document.getElementById("options").value,
+                    initial_conditions: initialConditions || ""
                 })
         })
             .then(response => {
@@ -59,7 +59,6 @@ document.getElementById("form-equation-input")
                 return response.json();
             })
             .then(data => {
-
                 const container = document.getElementById("step-by-step");
                 container.innerHTML = "";
 
@@ -106,7 +105,7 @@ function getAsLatex() {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
             value: INPUT.value || INPUT.placeholder,
-            initial_conditions: initialConditions || "y(0) = 0"
+            initial_conditions: initialConditions || ""
         })
     })
         .then(response => {
@@ -131,7 +130,7 @@ btn.onclick = function () {
     if (initialConditions != null) {
         document.getElementById('initial-conditions').value = initialConditions;
     } else {
-        document.getElementById('initial-conditions').value = "y(0) = 0";
+        document.getElementById('initial-conditions').value = "";
     }
 }
 
