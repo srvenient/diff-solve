@@ -57,6 +57,9 @@ def replace_character(a: str) -> str:
 
 
 def analyze_initial_conditions(expr: str):
+    if not expr:
+        return None, None
+
     expr = expr.replace(' ', '')
     characters = list(expr)
 
