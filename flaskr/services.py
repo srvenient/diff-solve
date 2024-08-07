@@ -1,11 +1,8 @@
-from sympy import Eq, sympify
+from sympy import Eq, sympify, pprint
 
-import flaskr.ode as ode
-from flaskr import utils
-
-METHODS = {
-    "separable": ode.Separable
-}
+from flaskr.solve.base_solver import NotImplementError
+from flaskr.solve import utils
+from flaskr.solve.methods import separable, selected
 
 
 def get_as_sympy(eq: str) -> Eq:
@@ -32,16 +29,17 @@ def dsolve(eq, method, y0, x0):
         raise ValueError("The equation must be an instance of Eq")
 
     if method == "automatic":
-        if ode.Separable.is_separable(eq)[0]:
-            if x0 == 0 and y0 == 0:
-                return ode.Separable().steps(eq)
+        try:
+            return separable.Separable().get_steps(eq, y0, x0)
+        except NotImplementError:
+            print("The equation is not separable")
+        except Exception as e:
+            print("An error occurred: ", e)
 
-            return ode.Separable().steps(eq, y0, x0)
+    # Ensure that selected method exists and has get_steps
+    solver = selected(method)
+    if not hasattr(solver, 'get_steps'):
+        raise ValueError(f"The selected method '{method}' does not have a 'get_steps' method")
 
-    if method not in METHODS:
-        raise ValueError("The method is not valid")
-
-    if x0 == 0 and y0 == 0:
-        return METHODS[method]().steps(eq)
-
-    return METHODS[method]().steps(eq, y0, x0)
+    steps = solver.get_steps(eq, y0, x0)
+    return steps

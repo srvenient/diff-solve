@@ -1,10 +1,8 @@
-import io
-import base64
-import matplotlib.pyplot as plt
+from flask import Blueprint, render_template, request, jsonify
+from sympy import latex, pprint
 
-from flaskr import services, utils
-from flask import Blueprint, render_template, request, jsonify, send_file
-from sympy import latex, plot
+from flaskr import services
+from flaskr.solve import utils
 
 bp = Blueprint('main', __name__)
 
@@ -29,7 +27,7 @@ def convert_to_latex():
 
     try:
         y0, x0 = utils.analyze_initial_conditions(initial_conditions)
-        if y0 == 0 and x0 == 0:
+        if y0 is None and x0 is None:
             return jsonify({'latex': latex(services.get_as_sympy(eq))})
 
         return jsonify({'latex': latex(services.get_as_sympy(eq)) + f",\\quad x_{0}={x0},\\quad y({x0}) = {y0}"})
@@ -53,10 +51,7 @@ def solve_ode():
             return jsonify({'error': 'The equation is required'}), 400
 
         if not method:
-            return jsonify({'error': 'The method is required'}), 400
-
-        if not initial_conditions:
-            return jsonify({'error': 'The initial conditions are required'}), 400
+            return jsonify({'error': 'The methods is required'}), 400
 
         y0, x0 = utils.analyze_initial_conditions(initial_conditions)
         steps = services.dsolve(
@@ -72,3 +67,5 @@ def solve_ode():
     except Exception as e:
         print(f"Unexpected error: {e}")  # Log the error for debugging
         return jsonify({'error': "An unexpected error occurred: " + str(e)}), 500
+    except BaseException as e:
+        print(f"Unexpected error: {e}")  # Log the error for debugging
