@@ -32,7 +32,7 @@ def convert_to_latex():
 
         return jsonify({'latex': latex(services.get_as_sympy(eq)) + f",\\quad x_{0}={x0},\\quad y({x0}) = {y0}"})
     except ValueError:
-        return jsonify({'error': eq})
+        return jsonify({'latex': eq})
 
 
 @bp.route('/api/get/solve_ode', methods=['POST'])
