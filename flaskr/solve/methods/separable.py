@@ -1,5 +1,4 @@
-from sympy import Eq, Function, Derivative, Integral, integrate, solve, factor, simplify, zoo, nan, latex, pprint, \
-    Symbol
+from sympy import *
 from sympy.abc import x, a, C
 from flaskr.solve.base_solver import BaseEDOSolver, NotImplementError
 
