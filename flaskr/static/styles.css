@@ -55,7 +55,6 @@ header {
     height: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin: -25px 0 20px -90px;
-
 }
 
 .calculator-body {
@@ -89,7 +88,7 @@ header {
     background-color: transparent;
 }
 
-.ic-btn {
+.btn {
     width: 773px;
     height: 31px;
     margin-left: 95px;
@@ -99,7 +98,7 @@ header {
     cursor: pointer;
 }
 
-.ic-btn:hover {
+.btn:hover {
     background-color: #365e17;
 }
 
@@ -259,4 +258,211 @@ header {
 
 .latex {
     font-size: 30px;
+}
+
+:root {
+    --header-margin-top: 20px;
+    --scale-header: 0.84;
+    --scale-hero: 0.7;
+    --scale-calculator: 0.82;
+    --input-font-size: 1.5rem;
+    --btn-margin-left: 250px;
+    --clear-margin-left: 600px;
+    --transform-clear: translateX(35%);
+    --modal-font-size: 16px;
+}
+
+@media (max-width: 1400px) {
+    header {
+        margin-top: var(--header-margin-top);
+        transform: scale(var(--scale-header));
+    }
+
+    .hero {
+        transform: scale(var(--scale-hero));
+    }
+
+    .calculator {
+        transform: scale(var(--scale-calculator));
+        width: auto;
+    }
+
+    .select-method {
+        margin-right: auto;
+        margin-left: auto;
+        display: inline-block;
+        vertical-align: center;
+    }
+
+    #input-equation {
+        width: 100%;
+        margin-left: auto;
+        font-size: var(--input-font-size);
+    }
+
+    .btn {
+        width: auto;
+        margin-left: var(--btn-margin-left);
+        display: inline-block;
+        color: #426b1f;
+        vertical-align: middle;
+        background-color: transparent;
+    }
+
+    #clear {
+        margin-left: var(--clear-margin-left);
+        background-color: transparent;
+        transform: var(--transform-clear);
+    }
+
+    .modal-content {
+        position: absolute;
+        margin-left: 20%;
+        width: 100%;
+        font-size: var(--modal-font-size);
+    }
+
+    .solve-container {
+        transform: scale(1);
+        background-color: #FAFAF5;
+        margin: 2px 0 40px;
+    }
+}
+
+
+@media (max-width: 991px) {
+    header {
+        margin-top: 20px;
+        transform: scale(1.010);
+    }
+
+    .calculator {
+        transform: scale(0.98);
+    }
+
+    .hero {
+        transform: scale(0.8);
+    }
+
+    .select-method {
+        margin-right: auto;
+        margin-left: auto;
+        display: inline-block;
+        vertical-align: center;
+    }
+
+    #input-equation {
+        width: 80%;
+        margin-left: auto;
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        width: auto;
+        margin-left: 99px;
+        display: inline-block;
+        color: #426b1f;
+        vertical-align: middle;
+        background-color: transparent;
+    }
+
+    #clear {
+        margin-left: 600px;
+        background-color: transparent;
+        transform: translateX(-100%);
+    }
+
+    .modal-content {
+        position: absolute;
+        margin-left: 10%;
+        width: 80%;
+        font-size: 14px;
+    }
+
+    .solve-container {
+        transform: scale(0.8);
+        background-color: #FAFAF5;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero {
+        scale: 0.9;
+    }
+
+    .select-method {
+        margin-right: auto;
+        margin-left: auto;
+        display: inline-block;
+        vertical-align: center;
+    }
+
+    #input-equation {
+        width: 68%;
+        margin-left: auto;
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        width: auto;
+        margin-left: 18px;
+        display: inline-block;
+        color: #426b1f;
+        vertical-align: middle;
+        background-color: transparent;
+    }
+
+    #clear {
+        margin-left: 600px;
+        background-color: transparent;
+        transform: translateX(-150%);
+    }
+
+    .modal-content {
+        position: absolute;
+        margin-left: 10%;
+        width: 80%;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .select-method, #input-equation, .btn {
+        margin: 10px 0; /* Agrega márgenes para separación */
+    }
+
+    .select-method {
+        margin-right: auto;
+        margin-left: auto;
+        display: inline-block;
+        vertical-align: center;
+    }
+
+    #input-equation {
+        width: 68%;
+        margin-left: auto;
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        width: auto;
+        margin-left: 18px;
+        display: inline-block;
+        color: #426b1f;
+        vertical-align: middle;
+        background-color: transparent;
+    }
+
+    #clear {
+        margin-left: 600px;
+        background-color: transparent;
+        transform: translateX(-150%);
+    }
+
+    .modal-content {
+        position: absolute;
+        margin-left: 10%;
+        width: 80%;
+        font-size: 14px;
+    }
 }
