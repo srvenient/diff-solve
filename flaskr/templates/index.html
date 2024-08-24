@@ -38,26 +38,21 @@
         <h1>Ecuaciones diferenciales <small>*Calculadora</small></h1>
         <hr class="divider">
         <p class="mt-5 hero-description">
-            La calculadora aplica métodos para resolver: ecuaciones diferenciales separables, homogéneas, lineales de
-            primer orden, de
-            Bernoulli y de Riccati. Sin o con condiciones iniciales (Esta calculadora funciona en y respecto a x).
+            La calculadora aplica métodos para resolver: ecuaciones diferenciales separables y homogéneas.
+            Sin o con condiciones iniciales (Esta calculadora funciona en y respecto a x).
         </p>
     </div>
 
-    <div class="container calculator d-flex justify-content-center align-items-center rounded-2">
+    <div class="container calculator d-flex justify-content-center flex-column justify-content-between align-items-center rounded-2">
         <div class="calculator-body text-center">
             <label>
                 <select class="select-method text-center bg-black text-white" id="options">
-                    <option value="automatic">Automatic</option>
                     <option value="separable">Separable</option>
                     <option value="homogeneous">Homogeneous</option>
-                    <option value="lineal">Lineal</option>
-                    <option value="bernoulli">Bernoulli</option>
-                    <option value="riccati">Riccati</option>
                 </select>
             </label>
 
-            <button class="ic-btn bg-white" id="openModalBtn">Condiciones iniciales (Click)</button>
+            <button type="button" class="btn btn-lg bg-white" id="openModalBtn">Condiciones iniciales (Click)</button>
             <!-- La ventana modal -->
             <div id="myModal" class="modal">
                 <div class="modal-content">
@@ -73,7 +68,7 @@
                             Si no se especifica algo diferente a y(0)=0, se asume
                             que no contiene condiciones iniciales.
 
-                            <input type="text" id="initial-conditions" name="initial-conditions" placeholder="y(0)=0">
+                            <input type="text" id="initial-conditions" name="initial-conditions" class="form-control" placeholder="y(0)=0">
                         </label>
                         <button type="submit">Guardar</button>
                     </form>
@@ -93,7 +88,7 @@
                 <div class="spinner"></div>
             </div>
 
-            <div class="solve-container border border-1 rounded-2 hidden" id="solve">
+            <div class="container solve-container border border-1 rounded-2 hidden" id="solve">
                 <a id="solve-title"></a>
                 <div id="step-by-step" class="step-by-step"></div>
             </div>

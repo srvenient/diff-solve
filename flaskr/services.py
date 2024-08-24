@@ -2,7 +2,7 @@ from sympy import Eq, sympify
 
 from flaskr.solve import utils
 from flaskr.solve.base_solver import NotImplementError
-from flaskr.solve.methods import separable, selected
+from flaskr.solve.methods import separable
 
 
 def get_as_sympy(eq: str) -> Eq:
@@ -28,18 +28,12 @@ def dsolve(eq, method, y0, x0):
     if not isinstance(eq, Eq):
         raise ValueError("The equation must be an instance of Eq")
 
-    if method == "automatic":
-        try:
+    try:
+        if method == "separable":
             return separable.Separable().get_steps(eq, y0, x0)
-        except NotImplementError:
-            print("The equation is not separable")
-        except Exception as e:
-            print("An error occurred: ", e)
-
-    # Ensure that selected method exists and has get_steps
-    solver = selected(method)
-    if not hasattr(solver, 'get_steps'):
-        raise ValueError(f"The selected method '{method}' does not have a 'get_steps' method")
-
-    steps = solver.get_steps(eq, y0, x0)
-    return steps
+        else:
+            raise ValueError("The method is not valid")
+    except NotImplementError:
+        print("The equation is not separable")
+    except Exception as e:
+        print("An error occurred: ", e)

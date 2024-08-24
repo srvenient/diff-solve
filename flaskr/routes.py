@@ -54,14 +54,16 @@ def solve_ode():
             return jsonify({'error': 'The methods is required'}), 400
 
         y0, x0 = utils.analyze_initial_conditions(initial_conditions)
-        steps = services.dsolve(
-            services.get_as_sympy(eq),
-            method,
-            y0,
-            x0
-        )
-
-        return jsonify({'steps': steps})
+        try:
+            steps = services.dsolve(
+                services.get_as_sympy(eq),
+                method,
+                y0,
+                x0
+            )
+            return jsonify({'steps': steps})
+        except ValueError as e:
+            return jsonify({'error': "A value error occurred: " + str(e)}), 400
     except ValueError as e:
         return jsonify({'error': "A value error occurred: " + str(e)}), 400
     except Exception as e:
