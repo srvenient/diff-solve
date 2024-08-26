@@ -479,7 +479,7 @@ header {
     #clear {
         margin-left: 0;
         background-color: transparent;
-        transform: translateX(500%);
+        transform: translateX(450%);
     }
 
     .modal-content {
