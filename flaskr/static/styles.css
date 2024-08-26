@@ -427,42 +427,87 @@ header {
 }
 
 @media (max-width: 576px) {
-    .select-method, #input-equation, .btn {
-        margin: 10px 0; /* Agrega márgenes para separación */
+    header {
+        transform: scale(1);
+    }
+
+    .divider {
+        width: 170%;
+        border: none;
+        border-top: 1px solid black;
+        margin: 16px 0 0 -96px;
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: column; /* Coloca los elementos en columna */
+        justify-content: center; /* Centra verticalmente en el contenedor */
+        align-items: center; /* Centra horizontalmente */
+        margin: 0 auto; /* Centra el contenido horizontalmente */
+        text-align: center; /* Centra el texto dentro del contenedor */
+        transform: scale(0.8);
+    }
+
+    .hero h1 {
+        margin-left: 0;
+        font-size: 2.5em;
+    }
+
+    .hero-description {
+        margin-left: 0;
+        font-size: 25px;
     }
 
     .select-method {
-        margin-right: auto;
-        margin-left: auto;
-        display: inline-block;
-        vertical-align: center;
+        width: 100%;
+        border-radius: 15px;
+        text-align: center;
     }
 
     #input-equation {
-        width: 68%;
+        width: 90%;
         margin-left: auto;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     .btn {
-        width: auto;
-        margin-left: 18px;
-        display: inline-block;
-        color: #426b1f;
-        vertical-align: middle;
-        background-color: transparent;
+        width: 100%;
+        margin: 5px 0;
+        font-size: 1rem;
     }
 
     #clear {
-        margin-left: 600px;
+        margin-left: 0;
         background-color: transparent;
-        transform: translateX(-150%);
+        transform: translateX(520%);
     }
 
     .modal-content {
         position: absolute;
-        margin-left: 10%;
-        width: 80%;
+        margin-left: 0;
+        width: 100%;
         font-size: 14px;
+    }
+
+    .solve-container {
+        transform: scale(1);
+        background-color: #FAFAF5;
+        margin: 10px 0;
+        font-size: 14px;
+    }
+
+    #solve-title {
+        margin-top: 10px;
+        font-size: 1.2rem;
+    }
+
+    .title {
+        font-weight: normal;
+        margin-bottom: 5px;
+        font-size: 17px;
+    }
+
+    .latex {
+        font-size: 20px;
     }
 }
