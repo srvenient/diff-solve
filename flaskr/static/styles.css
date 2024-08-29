@@ -336,6 +336,10 @@ header {
         transform: scale(1.010);
     }
 
+    .divider {
+        width: 925px;
+    }
+
     .calculator {
         transform: scale(0.98);
     }
@@ -387,7 +391,12 @@ header {
 
 @media (max-width: 767px) {
     .hero {
-        scale: 0.9;
+        transform: scale(0.7);
+    }
+
+
+    .divider {
+        width: 600px;
     }
 
     .select-method {
@@ -433,18 +442,15 @@ header {
 
     .divider {
         width: 170%;
-        border: none;
-        border-top: 1px solid black;
-        margin: 16px 0 0 -96px;
     }
 
     .hero {
         display: flex;
-        flex-direction: column; /* Coloca los elementos en columna */
-        justify-content: center; /* Centra verticalmente en el contenedor */
-        align-items: center; /* Centra horizontalmente */
-        margin: 0 auto; /* Centra el contenido horizontalmente */
-        text-align: center; /* Centra el texto dentro del contenedor */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        text-align: center;
         transform: scale(0.8);
     }
 
