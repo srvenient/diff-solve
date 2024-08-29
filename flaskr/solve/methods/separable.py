@@ -67,18 +67,24 @@ class Separable(BaseEDOSolver):
         if not isinstance(eq, Eq):
             raise ValueError("The equation must be an instance of Eq")
 
-        resolve = self.solve(eq, y0, x0)
-        steps = {
-            0: ('Despejando el diferencial', latex(eq)),
-            1: ('La ecuacion ecuacion separable es', latex(resolve[0])),
-            2: ('Integramos ambos lados de la ecuacion', latex(resolve[1])),
-            3: ('Solucion general', latex(resolve[2]))
-        }
+        try:
+            resolve = self.solve(eq, y0, x0)
 
-        if y0 is not None and x0 is not None:
-            steps[4] = ('Sustituimos las condiciones iniciales en la solucion general', latex(resolve[3]))
-            steps[5] = ('Despejando el valor de la constante', latex(resolve[4]))
-            steps[6] = ('Solucion particular', latex(resolve[5]))
-            steps[7] = ('Solucion en terminos de y', resolve[6])
+            steps = {
+                0: ('Despejando el diferencial', latex(eq)),
+                1: ('La ecuacion ecuacion separable es', latex(resolve[0])),
+                2: ('Integramos ambos lados de la ecuacion', latex(resolve[1])),
+                3: ('Solucion general', latex(resolve[2]))
+            }
 
-        return steps
+            if y0 is not None and x0 is not None:
+                steps[4] = ('Sustituimos las condiciones iniciales en la solucion general', latex(resolve[3]))
+                steps[5] = ('Despejando el valor de la constante', latex(resolve[4]))
+                steps[6] = ('Solucion particular', latex(resolve[5]))
+                steps[7] = ('Solucion en terminos de y', resolve[6])
+
+            return steps
+        except NotImplementError:
+            return None
+        except ValueError as e:
+            raise ValueError(f"An error occurred: {e}")

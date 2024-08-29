@@ -14,6 +14,7 @@ def index():
 
 @bp.route('/api/get/latex_format', methods=['POST'])
 def convert_to_latex():
+    """ Convert the equation to a LaTeX format"""
     data = request.get_json()
 
     if not data:
@@ -37,6 +38,7 @@ def convert_to_latex():
 
 @bp.route('/api/get/solve_ode', methods=['POST'])
 def solve_ode():
+    """ Solve the ordinary differential equation (ODE)"""
     try:
         data = request.get_json()
 
@@ -54,16 +56,17 @@ def solve_ode():
             return jsonify({'error': 'The methods is required'}), 400
 
         y0, x0 = utils.analyze_initial_conditions(initial_conditions)
-        try:
-            steps = services.dsolve(
+        steps = services.dsolve(
                 services.get_as_sympy(eq),
                 method,
                 y0,
                 x0
-            )
-            return jsonify({'steps': steps})
-        except ValueError as e:
-            return jsonify({'error': "A value error occurred: " + str(e)}), 400
+        )
+
+        if steps is None:
+            return jsonify({'error': 'The equation is not separable'}), 400
+
+        return jsonify({'steps': steps})
     except ValueError as e:
         return jsonify({'error': "A value error occurred: " + str(e)}), 400
     except Exception as e:

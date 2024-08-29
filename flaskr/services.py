@@ -1,7 +1,6 @@
 from sympy import Eq, sympify
 
 from flaskr.solve import utils
-from flaskr.solve.base_solver import NotImplementError
 from flaskr.solve.methods import separable
 
 
@@ -25,15 +24,19 @@ def get_as_sympy(eq: str) -> Eq:
 
 
 def dsolve(eq, method, y0, x0):
+    """ Solve the ordinary differential equation (ODE)"""
     if not isinstance(eq, Eq):
         raise ValueError("The equation must be an instance of Eq")
 
     try:
         if method == "separable":
-            return separable.Separable().get_steps(eq, y0, x0)
+            steps = separable.Separable().get_steps(eq, y0, x0)
+
+            if steps is None:
+                return None
+
+            return steps
         else:
             raise ValueError("The method is not valid")
-    except NotImplementError:
-        print("The equation is not separable")
     except Exception as e:
         print("An error occurred: ", e)
