@@ -278,6 +278,10 @@ header {
         transform: scale(var(--scale-header));
     }
 
+    .divider {
+        width: 1130px;
+    }
+
     .hero {
         transform: scale(var(--scale-hero));
     }
